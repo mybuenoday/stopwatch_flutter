@@ -15,6 +15,17 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
         title: const Text('Stopwatch'),
       ),
       body: Column(children: [
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              '0',
+              style: TextStyle(fontSize: 50),
+            ),
+            Text('00'),
+          ],
+        ),
         const Spacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
