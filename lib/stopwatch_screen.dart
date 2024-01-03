@@ -14,8 +14,8 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
       appBar: AppBar(
         title: const Text('Stopwatch'),
       ),
-      body: Column(
-        children: [
+      body: Column(children: [
+        const Spacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -36,8 +36,8 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
             ),
           ],
         ),
-      ]
-      ),
+        const SizedBox(height: 30),
+      ]),
     );
   }
 }
