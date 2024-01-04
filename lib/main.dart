@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:stopwatch_flutter/stopwatch_screen.dart';
 
 void main() {
+  Timer.periodic(const Duration(seconds: 1), (timer) {
+    print('Timer');
+  });
   runApp(const MyApp());
 }
 
