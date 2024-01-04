@@ -17,6 +17,19 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
 
   List<String> lapTimes = [];
 
+  void _clickButton() {
+    _isRunning = !_isRunning;
+
+    if (_isRunning) {
+      _start();
+    } else {
+      _pause();
+    }
+  }
+
+  void _start() {}
+  void _pause() {}
+
   @override
   void dispose() {
     _timer?.cancel();
@@ -68,8 +81,14 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
             ),
             FloatingActionButton(
               backgroundColor: Colors.blue,
-              onPressed: () {},
-              child: const Icon(Icons.play_arrow),
+              onPressed: () {
+                setState(() {
+                  _clickButton();
+                });
+              },
+              child: _isRunning
+                  ? const Icon(Icons.pause)
+                  : const Icon(Icons.play_arrow),
             ),
             FloatingActionButton(
               backgroundColor: Colors.green,
