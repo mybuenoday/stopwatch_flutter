@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:stopwatch_flutter/stopwatch_screen.dart';
 
 void main() {
-  Timer.periodic(const Duration(seconds: 1), (timer) {
-    print('Timer');
-  });
+/*  Timer.periodic(const Duration(seconds: 1), (timer) {
+    print('1Timer1');
+  });*/
   runApp(const MyApp());
 }
 
