@@ -46,6 +46,10 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
     _time = 0;
   }
 
+  void _recordLapTime(String time) {
+    _lapTimes.insert(0, '${_lapTimes.length + 1}등 $time');
+  }
+
   @override
   void dispose() {
     _timer?.cancel();
@@ -55,7 +59,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
   @override
   Widget build(BuildContext context) {
     int sec = _time ~/ 100; // 몫. milliseconds
-    String hundredth = '${_time % 100}'.padLeft(2, '0');
+    String millisec = '${_time % 100}'.padLeft(2, '0');
 
     return Scaffold(
       appBar: AppBar(
@@ -72,25 +76,15 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
               style: const TextStyle(fontSize: 50),
             ),
             Text(
-              hundredth,
+              millisec,
             ),
           ],
         ),
         SizedBox(
           width: 100,
-          height: 100,
+          height: 200,
           child: ListView(
-            children: const [
-              Center(child: Text('111')),
-              Center(child: Text('111')),
-              Text('111'),
-              Text('111'),
-              Text('111'),
-              Text('111'),
-              Text('111'),
-              Text('121'),
-            ],
-          ),
+              children: _lapTimes.map((e) => Center(child: Text(e))).toList()),
         ),
         const Spacer(),
         Row(
@@ -118,7 +112,11 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
             ),
             FloatingActionButton(
               backgroundColor: Colors.green,
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _recordLapTime('$sec.$millisec');
+                });
+              },
               child: const Icon(Icons.add),
             ),
           ],
